@@ -1,0 +1,6 @@
+.card-carimobil {
+  z-index: 1;
+  max-width: 65%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}

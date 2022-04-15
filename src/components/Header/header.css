@@ -1,0 +1,21 @@
+.nav-item {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+
+.registerbtn {
+  font-weight: 500;
+  background-color: #5cb85f;
+  color: #fff;
+  border-radius: 2px;
+  width: 81px;
+  height: 36px;
+  align-self: center;
+  border: none;
+}
+
+.navbar-collapse {
+  padding-top: 2%;
+}
