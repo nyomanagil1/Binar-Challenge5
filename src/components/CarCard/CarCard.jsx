@@ -21,7 +21,7 @@ function CarCard() {
 
   useEffect(() => {
     dispatch(getPost());
-  }, []);
+  });
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './detail.css';
 import { getPostByID } from '../../redux/action/postByIDAction';
 
@@ -12,7 +12,7 @@ function DetailComp() {
 
   useEffect(() => {
     dispatch(getPostByID(id));
-  }, []);
+  });
 
   return (
     <>
