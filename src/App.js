@@ -8,11 +8,13 @@ import Detail from './pages/Detail';
 const App = () => {
   return (
     <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hasil" element={<HasilPencarian />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
+
     </BrowserRouter>
   );
 };

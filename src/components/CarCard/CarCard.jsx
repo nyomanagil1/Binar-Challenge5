@@ -1,54 +1,43 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-import { useState } from 'react';
 import './cardhasil.css';
 import Pencarian from '../Search/Pencarian';
 import { useNavigate } from 'react-router-dom';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { getPost } from '../../redux/action/postAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CarCard() {
   const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
-  const [dataList, setDataList] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [showDetail, setShowDetail] = useState(false);
-  const [dataDetail, setDataDetail] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleData = async (e) => {
-    setDataList([]);
-    setShowDetail(false);
-    setLoading(true);
-    try {
-      const res = await axios('https://rent-cars-api.herokuapp.com/admin/car');
-      setDataList(res.data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { isLoading, data: post } = useSelector((state) => state.post);
 
   const handleDetail = (event) => {
     const id = event.target.value;
-    navigate(`/detail/${id}`)
-  }
+    navigate(`/detail/${id}`);
+  };
 
   useEffect(() => {
-    handleData();
+    dispatch(getPost());
   }, []);
 
   return (
     <div>
-      <form onSubmit={handleData}>
+      <form onSubmit={getPost}>
         <div class="d-flex justify-content-center">
           <Pencarian />
         </div>
       </form>
-      {loading && <div class='d-flex justify-content-center mt-5' ><Spin indicator={antIcon} /></div> }
+      {isLoading && (
+        <div class="d-flex justify-content-center mt-5">
+          <Spin indicator={antIcon} />
+        </div>
+      )}
       <div class="container">
         <div class="row mt-2">
-          {dataList?.map((item) => {
+          {post?.map((item) => {
             return (
               <div class="col-lg-4 my-2">
                 <div class="card card-mobil h-100 p-1" key={item.id}>
